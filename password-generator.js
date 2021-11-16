@@ -96,8 +96,8 @@ function pg() {
   var capitalChk = document.getElementById("capital");
   var smallChk = document.getElementById("small");
   var numberChk = document.getElementById("number");
-  var outputObj = document.getElementById("output");
   var lenghtP = parseInt(prompt("Length of your password? ", ""));
+  var box = document.querySelector(".passwords");
 
   for (i = 0; i < lenghtP; i++) {
     str += "X";
@@ -115,5 +115,5 @@ function pg() {
     str = number(str, lenghtP);
   }
 
-  outputObj.innerHTML = str;
+  box.innerHTML = str;
 }
