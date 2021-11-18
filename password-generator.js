@@ -84,7 +84,7 @@ function pg() {
     if (capitalChk.checked && smallChk.checked && numberChk.checked == true) {
       str += passWord(Math.floor(randomNumber(0, 62)));
     } else if (capitalChk.checked && smallChk.checked == true) {
-      str += passWord(Math.floor(randomNumber(0, 52)));
+      str += passWord(Math.floor(randomNumber(0, 53)));
     } else if (capitalChk.checked && numberChk.checked == true) {
       if (capitalnum == false) {
         str += passWord(Math.floor(randomNumber(0, 25)));
@@ -96,7 +96,7 @@ function pg() {
     } else if (numberChk.checked && smallChk.checked == true) {
       str += passWord(Math.floor(randomNumber(26, 59)));
     } else if (smallChk.checked == true) {
-      str += passWord(Math.floor(randomNumber(26, 52)));
+      str += passWord(Math.floor(randomNumber(26, 53)));
     } else if (numberChk.checked == true) {
       str += passWord(Math.floor(randomNumber(53, 59)));
     } else if (capitalChk.checked == true) {
