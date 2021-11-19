@@ -1,106 +1,96 @@
-function randomNumber(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-function passWord(param) {
-  Letters = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    0,
-  ];
-
-  return Letters[param];
-}
-
-function pg() {
+function passwordgenr() {
   let str = "";
   var capitalChk = document.getElementById("capital");
   var smallChk = document.getElementById("small");
   var numberChk = document.getElementById("number");
-  var lenghtP = document.getElementById("length").value;
+  var charChk = document.getElementById("character");
+  var lengthOfpassword = document.getElementById("length").value;
   var box = document.getElementById("passWordtxt");
-  let capitalnum = true;
 
-  for (i = 0; i < lenghtP; i++) {
-    if (capitalChk.checked && smallChk.checked && numberChk.checked == true) {
-      str += passWord(Math.floor(randomNumber(0, 62)));
-    } else if (capitalChk.checked && smallChk.checked == true) {
-      str += passWord(Math.floor(randomNumber(0, 52)));
-    } else if (capitalChk.checked && numberChk.checked == true) {
-      if (capitalnum == false) {
-        str += passWord(Math.floor(randomNumber(0, 25)));
-        capitalnum = true;
-      } else {
-        str += passWord(Math.floor(randomNumber(53, 59)));
-        capitalnum = false;
+  chx = [
+    [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "V",
+      "W",
+      "X",
+      "Y",
+      "Z",
+    ],
+    ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"],
+  ];
+
+  if (smallChk.checked == true) {
+    console.log("hello");
+    for (i = 0; i < lengthOfpassword; i++) {
+      str += chx[0][Math.floor(Math.random() * 25)];
+      str = str.toLowerCase();
+    }
+  }
+
+  if (capitalChk.checked == true) {
+    if (str) {
+      str = str.split("");
+      for (j = 0; j < Math.floor(lengthOfpassword / 2); j++) {
+        str[j] = str[j].toUpperCase();
       }
-    } else if (numberChk.checked && smallChk.checked == true) {
-      str += passWord(Math.floor(randomNumber(26, 59)));
-    } else if (smallChk.checked == true) {
-      str += passWord(Math.floor(randomNumber(26, 52)));
-    } else if (numberChk.checked == true) {
-      str += passWord(Math.floor(randomNumber(53, 59)));
-    } else if (capitalChk.checked == true) {
-      str += passWord(Math.floor(randomNumber(0, 25)));
+
+      str = str.join("");
+    } else {
+      for (j = 0; j < lengthOfpassword; j++) {
+        str += chx[0][Math.floor(Math.random() * 25)];
+      }
+    }
+  }
+
+  if (numberChk.checked == true) {
+    if (str) {
+      str = str.split("");
+      for (k = 0; k < Math.floor(lengthOfpassword / 2); k++) {
+        str[Math.floor(Math.random() * lengthOfpassword)] = Math.floor(
+          Math.random() * 10
+        );
+      }
+      str = str.join("");
+    } else {
+      for (n = 0; n < lengthOfpassword; n++) {
+        str += Math.floor(Math.random() * 10);
+      }
+    }
+  }
+
+  if (charChk.checked == true) {
+    if (str) {
+      str = str.split("");
+      for (c = 0; c < Math.floor(lengthOfpassword / 3); c++) {
+        str[Math.floor(Math.random() * str.length)] =
+          chx[1][Math.floor(Math.random() * 10)];
+      }
+
+      str = str.join("");
+    } else {
+      for (c = 0; c < lengthOfpassword; c++) {
+        str += chx[1][Math.floor(Math.random() * 10)];
+      }
     }
   }
 
